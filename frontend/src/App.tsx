@@ -3,6 +3,7 @@ import './App.css';
 import axios from "axios";
 import {Book, NewBook} from "./models/Book";
 import AddBook from "./components/AddBook";
+import BookComp from './components/BookComp';
 
 function App() {
     const [books, setBooks] = useState<Book[]>([]);
@@ -24,7 +25,9 @@ function App() {
     return (
         <div className="App">
             {
-                books.map(book => <div key={book.isbn}>{book.title}</div>)
+                books.map(book =>
+                    <BookComp key={book.isbn} book={book} />
+                )
             }
             <AddBook addNewBook={addBook} />
         </div>
