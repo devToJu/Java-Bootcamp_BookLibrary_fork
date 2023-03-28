@@ -6,3 +6,9 @@ export type Book = {
     author: string,
     cover: Cover
 }
+
+export type NewBook = {
+    title: string,
+    author: string,
+    cover: Cover
+}
