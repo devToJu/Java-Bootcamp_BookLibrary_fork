@@ -6,6 +6,7 @@ import AddBook from "./components/AddBook";
 import BookBoard from "./components/BookBoard";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Header from "./components/Header";
+import Navigation from "./components/Navigation";
 
 function App() {
     const [books, setBooks] = useState<Book[]>([]);
@@ -32,12 +33,17 @@ function App() {
 
     return (
         <div className="App">
-            <Header />
+            <Header/>
             <BrowserRouter>
                 <Routes>
                     <Route path={'/'}
-                           element={<BookBoard books={books} deleteBook={deleteBook}/>}/>
-                    <Route path={'/addBook'} element={<AddBook addNewBook={addBook}/>}/>
+                           element={<Navigation/>}>
+                        <Route path={'/'}
+                               element={<BookBoard books={books}
+                                                   deleteBook={deleteBook}/>}/>
+                        <Route path={'/addBook'}
+                               element={<AddBook addNewBook={addBook}/>}/>
+                    </Route>
                 </Routes>
             </BrowserRouter>
         </div>
