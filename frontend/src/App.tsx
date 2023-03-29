@@ -7,6 +7,7 @@ import BookBoard from "./components/BookBoard";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Header from "./components/Header";
 import Navigation from "./components/Navigation";
+import UpdateBook from "./components/UpdateBook";
 
 function App() {
     const [books, setBooks] = useState<Book[]>([]);
@@ -44,6 +45,8 @@ function App() {
                         <Route path={'/addBook'}
                                element={<AddBook addNewBook={addBook}/>}/>
                     </Route>
+                    <Route path={'/update/:isbn'}
+                           element={<UpdateBook/>}/>
                 </Routes>
             </BrowserRouter>
         </div>
