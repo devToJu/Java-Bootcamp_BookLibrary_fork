@@ -4,6 +4,7 @@ import axios from "axios";
 import {Book, NewBook} from "./models/Book";
 import AddBook from "./components/AddBook";
 import BookBoard from "./components/BookBoard";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
 
 function App() {
     const [books, setBooks] = useState<Book[]>([]);
@@ -30,8 +31,13 @@ function App() {
 
     return (
         <div className="App">
-            <BookBoard books={books} deleteBook={deleteBook}/>
-            <AddBook addNewBook={addBook}/>
+            <BrowserRouter>
+                <Routes>
+                    <Route path={'/'}
+                           element={<BookBoard books={books} deleteBook={deleteBook}/>}/>
+                    <Route path={'/addBook'} element={<AddBook addNewBook={addBook}/>}/>
+                </Routes>
+            </BrowserRouter>
         </div>
     );
 }
