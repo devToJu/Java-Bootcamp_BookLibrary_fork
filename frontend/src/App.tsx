@@ -15,13 +15,13 @@ function App() {
     useEffect(() => getBooks(), []);
 
     const getBooks = () => {
-        axios.get("api/books")
+        axios.get("/api/books")
             .then(response => setBooks(response.data))
             .catch(reason => console.log(reason));
     }
 
     const addBook = (newBook: NewBook) => {
-        axios.post("api/books", newBook)
+        axios.post("/api/books", newBook)
             .then(response => setBooks([...books, response.data]))
             .catch(reason => console.log(reason));
     }
