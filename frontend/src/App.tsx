@@ -5,6 +5,7 @@ import {Book, NewBook} from "./models/Book";
 import AddBook from "./components/AddBook";
 import BookBoard from "./components/BookBoard";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
+import Header from "./components/Header";
 
 function App() {
     const [books, setBooks] = useState<Book[]>([]);
@@ -31,6 +32,7 @@ function App() {
 
     return (
         <div className="App">
+            <Header />
             <BrowserRouter>
                 <Routes>
                     <Route path={'/'}
