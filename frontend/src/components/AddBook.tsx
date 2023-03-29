@@ -27,7 +27,7 @@ export default function AddBook(props: Props) {
         setNewBook(initBook);
     }
 
-    return(
+    return (
         <>
             <form onSubmit={addBook}>
                 <input type="text"

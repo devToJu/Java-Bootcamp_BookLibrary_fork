@@ -22,14 +22,22 @@ function App() {
             .catch(reason => console.log(reason));
     }
 
+    const deleteBook = (isbn: string) => {
+        axios.delete(`/api/books/${isbn}`)
+            .then(() => setBooks(books.filter(book => book.isbn !== isbn)))
+            .catch(reason => console.log(reason))
+    }
+
     return (
         <div className="App">
             {
                 books.map(book =>
-                    <BookComp key={book.isbn} book={book} />
-                )
+                    <BookComp key={book.isbn}
+                              book={book}
+                              deleteBook={deleteBook}
+                    />)
             }
-            <AddBook addNewBook={addBook} />
+            <AddBook addNewBook={addBook}/>
         </div>
     );
 }
