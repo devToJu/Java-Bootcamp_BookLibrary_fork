@@ -1,5 +1,6 @@
 import React, {ChangeEvent, FormEvent, useState} from "react";
 import {NewBook} from "../models/Book";
+import {useNavigate} from "react-router-dom";
 
 type Props = {
     addNewBook: (book: NewBook) => void;
@@ -12,6 +13,7 @@ export default function AddBook(props: Props) {
         cover: "HARDCOVER"
     }
 
+    const navigation = useNavigate();   // Zugriff auf Routing
     const [newBook, setNewBook] = useState<NewBook>(initBook);
 
     const onChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -25,6 +27,7 @@ export default function AddBook(props: Props) {
         event.preventDefault();
         props.addNewBook(newBook);
         setNewBook(initBook);
+        navigation("/")
     }
 
     return (
